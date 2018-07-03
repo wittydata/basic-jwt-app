@@ -1,0 +1,12 @@
+body,
+html,
+#root {
+  background-color: #f0f2f5;
+  color: #323232;
+  font-family: 'Lato', sans-serif;
+  font-size: 12pt;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}

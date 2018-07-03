@@ -1,0 +1,47 @@
+{
+  "name": "basic-jwt-app",
+  "version": "0.0.1",
+  "description": "Basic JSON Web Token (JWT) based web application",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wittydata/basic-jwt-app.git"
+  },
+  "keywords": [
+    "jwt",
+    "json web token",
+    "react",
+    "redux",
+    "antd",
+    "ant design"
+  ],
+  "author": "Witty Data",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.6.3",
+    "koa": "^2.5.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "normalize.css": "^8.0.0",
+    "pino": "^4.17.3",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-saga": "^0.16.0",
+    "whatwg-fetch": "^2.0.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "server": "NODE_ENV=production PORT=3001 node server"
+  },
+  "proxy": "http://localhost:3000"
+}

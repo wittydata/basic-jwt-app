@@ -1,0 +1,22 @@
+.wd-user-list .ant-tag {
+  cursor: default;
+  margin-right: 0;
+}
+
+.wd-user-list .ant-tag:hover {
+  opacity: 1;
+}
+
+.wd-user-list .extra {
+  display: flex;
+  width: 150px;
+}
+
+.wd-user-list .extra .active {
+  flex: 1;
+}
+
+.wd-user-list .extra .role {
+  flex: 1;
+  font-weight: bold;
+}

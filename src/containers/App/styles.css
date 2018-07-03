@@ -1,0 +1,19 @@
+.wd-app .content {
+  margin: 96px 32px 32px 32px;
+}
+
+.wd-app .content .container {
+  background-color: #fefefe;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.wd-app .header {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.wd-app .menu {
+  line-height: 64px;
+}

@@ -1,0 +1,32 @@
+.wd-forgot {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.wd-forgot .alert {
+  margin-bottom: 24px;
+}
+
+.wd-forgot .button {
+  width: 100%;
+}
+
+.wd-forgot .button-container {
+  margin-bottom: 0;
+}
+
+.wd-forgot .container {
+  background:#fefefe;
+  border-radius: 30px;
+  padding: 36px 24px;
+  width: 300px;
+  -webkit-box-shadow: -1px 2px 50px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -1px 2px 50px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: -1px 2px 50px -1px rgba(0, 0, 0, 0.2);
+}
+
+.wd-forgot .login {
+  text-align: center;
+}
