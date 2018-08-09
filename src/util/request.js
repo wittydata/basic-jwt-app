@@ -12,7 +12,7 @@ import sessionStorage from './sessionStorage'
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request (url, options = {}) {
-  if (url.startsWith('/api')) {
+  if (url.startsWith('/private')) {
     const { headers = {} } = options
     options.headers = Object.assign({ 'Authorization': `Bearer ${localStorage.getItem('token')}` }, headers)
   }

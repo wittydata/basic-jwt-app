@@ -1,7 +1,7 @@
 import { request } from '../util'
 
 const headers = { 'Content-Type': 'application/json' }
-const url = '/api/notes/'
+const url = '/private/api/notes/'
 
 export default {
   add (values) {

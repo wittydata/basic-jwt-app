@@ -1,6 +1,6 @@
 import { localStorage, notification, request } from '../util'
 
-const url = '/public/api/'
+const url = '/api/'
 
 export default {
   getCurrentToken () {

@@ -1,6 +1,6 @@
 import { request } from '../util'
 
-const url = '/api/roles/'
+const url = '/private/api/roles/'
 
 export default {
   find (text = '') {

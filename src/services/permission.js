@@ -1,6 +1,6 @@
 import { localStorage, request } from '../util'
 
-const url = '/api/permissions/'
+const url = '/private/api/permissions/'
 
 export default {
   canPerform (actions, permissions, any = true) {
