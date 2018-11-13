@@ -20,40 +20,16 @@ export default function request (url, options = {}) {
   async function handleError (response) {
     const { status } = response
 
-    if ((status >= 200 && status < 300) || status === 401) {
-      return response
+    if ((status >= 200 && status < 300)) {
+      return response.json()
     } else if (status === 400) {
       const error = new Error(`${response.status} ${response.statusText}`)
       const jsonResponse = await response.json()
       error.response = jsonResponse
       throw error
     } else {
+      console.error(response)
       throw response
-    }
-  }
-
-  async function handleSession (response) {
-    try {
-      const jsonResponse = await response.json()
-      const redirected = localStorage.getItem('redirected') === 'true'
-
-      if (!redirected && jsonResponse.tokenExpired) {
-        sessionStorage.setItem('tokenExpired', true)
-        window.location.href = '/login'
-        return {}
-      } else if (!redirected && jsonResponse.tokenRevoked) {
-        sessionStorage.setItem('tokenRevoked', true)
-        window.location.href = '/login'
-        return {}
-      } else if (!redirected && jsonResponse.unauthorized) {
-        sessionStorage.setItem('unauthorized', true)
-        window.location.href = '/login'
-        return {}
-      }
-
-      return jsonResponse
-    } catch (e) {
-      console.error(e)
     }
   }
 
@@ -65,7 +41,6 @@ export default function request (url, options = {}) {
         localStorage.setItem('token', token)
         options.headers = Object.assign({ 'Authorization': `Bearer ${token}` }, headers)
         return fetch(`${apiHostname}${url}`, Object.assign({ credentials: 'same-origin' }, options))
-          .then(handleError)
           .then(handleSession)
           .then(handleRefresh)
       }
@@ -76,8 +51,38 @@ export default function request (url, options = {}) {
     }
   }
 
+  async function handleSession (response) {
+    const { status } = response
+
+    if (status === 401) {
+      try {
+        const jsonResponse = await response.json()
+
+        if (jsonResponse.tokenExpired) {
+          sessionStorage.setItem('tokenExpired', true)
+          window.location.href = '/login'
+          return {}
+        } else if (jsonResponse.tokenRevoked) {
+          sessionStorage.setItem('tokenRevoked', true)
+          window.location.href = '/login'
+          return {}
+        } else if (jsonResponse.unauthorized) {
+          sessionStorage.setItem('unauthorized', true)
+          window.location.href = '/login'
+          return {}
+        }
+
+        return jsonResponse
+      } catch (e) {
+        console.error(e)
+      }
+    }
+
+    return response
+  }
+
   return fetch(`${apiHostname}${url}`, Object.assign({ credentials: 'same-origin' }, options))
-    .then(handleError)
     .then(handleSession)
     .then(handleRefresh)
+    .then(handleError)
 }
