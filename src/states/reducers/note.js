@@ -17,5 +17,6 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 function handleNotesFetched ({ loading, notes }) {
-  return { loading, notes }
+  const { list } = notes
+  return { loading, notes: list || [] }
 }

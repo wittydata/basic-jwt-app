@@ -7,8 +7,13 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case PERMISSIONS_FETCHED:
-      return { ...state, permissions: action.permissions }
+      return { ...state, ...handlePermissionsFetched(action) }
     default:
       return state
   }
+}
+
+function handlePermissionsFetched ({ loading, permissions }) {
+  const { list } = permissions
+  return { loading, permissions: list || [] }
 }

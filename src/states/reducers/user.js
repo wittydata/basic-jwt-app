@@ -17,5 +17,6 @@ export default (state = INITIAL_STATE, action) => {
 }
 
 function handleUsersFetched ({ loading, users }) {
-  return { loading, users }
+  const { list } = users
+  return { loading, users: list || [] }
 }
