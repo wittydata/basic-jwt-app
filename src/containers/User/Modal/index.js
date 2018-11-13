@@ -223,7 +223,7 @@ class UserModal extends Component {
     })
   }
 
-  async findRoles (text) {
+  findRoles = async (text) => {
     const roles = await roleService.find(text)
     this.setState({ roles })
   }

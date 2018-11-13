@@ -121,7 +121,7 @@ class User extends Component {
         const { usersFetched } = this.props
         const { users } = this.state
         notification.show('success', 'Removed successfully', 'User removed successfully.')
-        usersFetched(users.filter((user) => user._id !== _id))
+        usersFetched({ list: users.filter((note) => note._id !== _id) })
       }
     } catch (e) {
       notification.show('error', 'Unable to remove successfully', 'Unable to remove user successfully.')
@@ -148,11 +148,11 @@ class User extends Component {
     this.setModal(user, title, true)
   }
 
-  setModal (user, title, visible) {
+  setModal = (user, title, visible) => {
     this.setState({ modal: { user, title, visible, handleHideModal: this.handleHideModal } })
   }
 
-  canPerform (actions) {
+  canPerform = (actions) => {
     const { permissions } = this.props
     return permissionService.canPerform(actions, permissions)
   }

@@ -194,11 +194,12 @@ class ForgotPassword extends Component {
           try {
             const response = await authService.signIn(email, password, newPassword)
             const { permissions, token, user } = response
+            const { list: permissionList } = permissions
             permissionsFetched(permissions)
             localStorage.setItem('redirected', false)
             localStorage.setItem('rememberMe', false)
             localStorage.setItem('token', token)
-            localStorage.setObject('permissions', permissions)
+            localStorage.setObject('permissions', permissionList || [])
             localStorage.setObject('user', user)
             sessionStorage.removeItem('tokenExpired')
             sessionStorage.removeItem('tokenRevoked')
@@ -260,17 +261,17 @@ class ForgotPassword extends Component {
     }
   }
 
-  hideAlert () {
+  hideAlert = () => {
     const { alert } = this.state
     alert.show = false
     this.setState({ alert })
   }
 
-  isEnterKey (e) {
+  isEnterKey = (e) => {
     return e && e.key === 'Enter'
   }
 
-  isMouseClick (e) {
+  isMouseClick = (e) => {
     return e && e.key === undefined && e.currentTarget.tagName.toLowerCase() === 'button'
   }
 }

@@ -85,17 +85,18 @@ class App extends Component {
     }
   }
 
-  async fetchPermissions () {
+  fetchPermissions = async () => {
     const { permissions, permissionsFetched } = this.props
 
     if (permissions.length < 1) {
       const response = await permissionService.list()
+      const { list: permissionList } = response
       permissionsFetched(response)
-      localStorage.setObject('permissions', response)
+      localStorage.setObject('permissions', permissionList || [])
     }
   }
 
-  canPerform (actions, any) {
+  canPerform = (actions, any) => {
     const { permissions } = this.props
     return permissionService.canPerform(actions, permissions, any)
   }

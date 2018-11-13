@@ -112,9 +112,10 @@ class Note extends Component {
         const { notesFetched } = this.props
         const { notes } = this.state
         notification.show('success', 'Removed successfully', 'Note removed successfully.')
-        notesFetched(notes.filter((note) => note._id !== _id))
+        notesFetched({ list: notes.filter((note) => note._id !== _id) })
       }
     } catch (e) {
+      console.log(111, e)
       notification.show('error', 'Unable to remove successfully', 'Unable to remove note successfully.')
     }
   }
@@ -139,11 +140,11 @@ class Note extends Component {
     this.setModal(note, title, true)
   }
 
-  setModal (note, title, visible) {
+  setModal = (note, title, visible) => {
     this.setState({ modal: { note, title, visible, handleHideModal: this.handleHideModal } })
   }
 
-  canPerform (actions) {
+  canPerform = (actions) => {
     const { permissions } = this.props
     return permissionService.canPerform(actions, permissions)
   }

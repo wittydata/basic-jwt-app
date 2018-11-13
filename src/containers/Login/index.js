@@ -262,11 +262,12 @@ class Login extends Component {
             if (resetPassword) {
               this.setState({ resetPassword: true, loading: false })
             } else {
+              const { list: permissionList } = permissions
               permissionsFetched(permissions)
               localStorage.setItem('redirected', false)
               localStorage.setItem('rememberMe', rememberMe)
               localStorage.setItem('token', token)
-              localStorage.setObject('permissions', permissions)
+              localStorage.setObject('permissions', permissionList || [])
               localStorage.setObject('user', user)
               sessionStorage.removeItem('tokenExpired')
               sessionStorage.removeItem('tokenRevoked')
@@ -290,17 +291,17 @@ class Login extends Component {
     }
   }
 
-  hideAlert () {
+  hideAlert = () => {
     const { alert } = this.state
     alert.show = false
     this.setState({ alert })
   }
 
-  isEnterKey (e) {
+  isEnterKey = (e) => {
     return e && e.key === 'Enter'
   }
 
-  isMouseClick (e) {
+  isMouseClick = (e) => {
     return e && e.key === undefined && e.currentTarget.tagName.toLowerCase() === 'button'
   }
 }
