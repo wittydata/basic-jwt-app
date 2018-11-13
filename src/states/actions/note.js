@@ -18,7 +18,6 @@ export const fetchingNotes = () => {
 }
 
 export const notesFetched = (notes) => {
-  notes = Array.isArray(notes) ? notes : []
   return {
     type: NOTES_FETCHED,
     notes

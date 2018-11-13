@@ -18,7 +18,8 @@ export const fetchingUsers = () => {
 }
 
 export const usersFetched = (users) => {
-  users = Array.isArray(users) ? users : []
+  const { list } = users
+  users = Array.isArray(list) ? users : { list: [] }
   return {
     type: USERS_FETCHED,
     users
