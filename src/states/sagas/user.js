@@ -8,7 +8,7 @@ function * fetchUsers ({ loading }) {
     const users = yield userService.list()
     yield put({ type: USERS_FETCHED, loading: false, users })
   } catch (e) {
-    yield put({ type: USERS_FETCHED, users: [] })
+    yield put({ type: USERS_FETCHED, users: { list: [] } })
   }
 }
 

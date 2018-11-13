@@ -8,7 +8,7 @@ function * fetchNotes ({ loading }) {
     const notes = yield noteService.list()
     yield put({ type: NOTES_FETCHED, loading: false, notes })
   } catch (e) {
-    yield put({ type: NOTES_FETCHED, notes: [] })
+    yield put({ type: NOTES_FETCHED, notes: { list: [] } })
   }
 }
 
